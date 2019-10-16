@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: publicacoes
+#
+#  id             :bigint           not null, primary key
+#  publicacao     :string
+#  autor          :string
+#  instituicao    :string
+#  status         :string
+#  area           :string
+#  ano            :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  area_id        :bigint
+#  instituicao_id :bigint
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the
