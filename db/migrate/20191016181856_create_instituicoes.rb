@@ -1,6 +1,6 @@
-class CreateIntituicoes < ActiveRecord::Migration[5.1]
+class CreateInstituicoes < ActiveRecord::Migration[5.1]
   def change
-    create_table :intituicoes do |t|
+    create_table :instituicoes do |t|
       t.string :nome
       t.string :sigla
       t.string :regiao
