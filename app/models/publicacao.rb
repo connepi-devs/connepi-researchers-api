@@ -16,8 +16,16 @@
 #
 
 class Publicacao < ApplicationRecord
-    self.table_name = :publicacoes
+  self.table_name = :publicacoes
 
-    belongs_to :area
-    belongs_to :instituicao
+  belongs_to :area
+  belongs_to :instituicao
+
+  def area_attribute
+    read_attribute(:area)
+  end
+
+  def instituicao_attribute
+    read_attribute(:instituicao)
+  end
 end
