@@ -23,4 +23,18 @@ namespace :define_publicacoes_entities do
     end
   end
 
+  task define_region: :environment do
+    Instituicao.all.each do |inst|
+      case inst.sigla
+      when 'IFAM', 'IFAC', 'IFPA', 'IFAP', 'IFTO', 'IFRO', 'IFRR'
+        inst.update(regiao: 'norte')
+      when 'IFAL', 'IFBA', 'IF BAIANO', 'IFCE', 'IFMA', 'IFPE', 'IF SERTAO PE', 'IFPB', 'IFPI', 'IFRN', 'IFS'
+        inst.update(regiao: 'nordeste')
+      else
+        inst.update(regiao: 'outros')
+      end
+      puts "updating region ..."
+    end
+  end
+
 end
