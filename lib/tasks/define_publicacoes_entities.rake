@@ -7,12 +7,19 @@ namespace :define_publicacoes_entities do
   task define_entities: :environment do
     Publicacao.all.each do |publicacao|
       Instituicao.create(
-        nome: publicacao.instituicao_attribute,
         sigla: publicacao.instituicao_attribute
-      ) unless Instituicao.where(nome: publicacao.instituicao_attribute).any?
+      ) unless Instituicao.where(sigla: publicacao.instituicao_attribute).any?
 
       Area.create(nome: publicacao.area_attribute) unless Area.where(nome: publicacao.area_attribute).any?
       puts "Criando Registros..."
+    end
+  end
+
+  task update_publicacoes: :environment do
+    Publicacao.all.each do |publicacao|
+      instituicao = Instituicao.find_by(sigla: publicacao.instituicao_attribute)
+      area = Area.find_by(nome: publicacao.area_attribute)
+      publicacao.update(instituicao_id: instituicao.id, area_id: area.id)
     end
   end
 
