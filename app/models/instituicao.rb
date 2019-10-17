@@ -3,7 +3,6 @@
 # Table name: instituicoes
 #
 #  id         :bigint           not null, primary key
-#  nome       :string
 #  sigla      :string
 #  regiao     :string
 #  created_at :datetime         not null

@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191016182509) do
+ActiveRecord::Schema.define(version: 20191017175000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "areas", force: :cascade do |t|
     t.string "nome"
@@ -22,22 +23,19 @@ ActiveRecord::Schema.define(version: 20191016182509) do
   end
 
   create_table "instituicoes", force: :cascade do |t|
-    t.string "nome"
     t.string "sigla"
     t.string "regiao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "publicacoes", force: :cascade do |t|
-    t.string "publicacao"
-    t.string "autor"
-    t.string "instituicao"
-    t.string "status"
-    t.string "area"
+  create_table "publicacoes", id: :serial, force: :cascade do |t|
+    t.string "publicacao", limit: 255
+    t.string "autor", limit: 255
+    t.string "status", limit: 255
     t.integer "ano"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.bigint "area_id"
     t.bigint "instituicao_id"
     t.index ["area_id"], name: "index_publicacoes_on_area_id"
