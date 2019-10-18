@@ -1,8 +1,5 @@
 namespace :define_publicacoes_entities do
   desc "Define instituicoes table and area table based on publicacoes"
-
-  #There are 11 thousand of registers about publications
-  #There are 331 universities registered
   
   task define_entities: :environment do
     Publicacao.all.each do |publicacao|
@@ -36,5 +33,4 @@ namespace :define_publicacoes_entities do
       puts "updating region ..."
     end
   end
-
 end
