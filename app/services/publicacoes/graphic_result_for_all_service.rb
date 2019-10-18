@@ -9,11 +9,12 @@ module Publicacoes
 
         Instituicao.all.each do |inst|
           @result.push({ "instituicao": "#{inst.sigla}"})
+
           years.each do |year|
-            @result.last.merge!("data": [{"ano": year}])
+            @result.last[:data].present? ? @result.last[:data].push({"ano": year}) : @result.last.merge!("data": [{"ano": year}])
+
             areas.each do |area|
-              binding.pry
-              @result.last[:data].last.merge!("#{area.nome}": Publicacao.where(area_id: area.id, instituicao_id: inst.id).count)
+              @result.last[:data].last.merge!("#{area.nome}": Publicacao.where(area: area, instituicao_id: inst.id, ano:year).count)
             end
           end
         end
