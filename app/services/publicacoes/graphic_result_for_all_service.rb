@@ -3,6 +3,9 @@ module Publicacoes
     class << self
 
       def build(publicacoes)
+
+        
+
       end
 
     end
