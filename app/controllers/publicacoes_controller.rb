@@ -8,7 +8,7 @@ class PublicacoesController < ApplicationController
   private
 
   def filter_params
-    params.permit(:instituicao_id)
+    params.permit(:instituicao_id, :outros)
   end
 
 end
