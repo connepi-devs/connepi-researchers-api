@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'publicacoes/build_graphic', to: 'publicacoes#build_graphic'
     get 'publicacoes/institutos_federais_do_norte_e_nordeste', to: 'publicacoes#federal_institutes_chart_data'
     get 'publicacoes/general_graphic', to: 'publicacoes#general_graphic'
+    get 'publicacoes/articles_count', to: 'publicacoes#articles_count'
 
     resources :instituicoes, only: [:index]
   end

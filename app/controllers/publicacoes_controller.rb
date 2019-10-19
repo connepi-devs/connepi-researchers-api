@@ -16,6 +16,14 @@ class PublicacoesController < ApplicationController
     render json: ::Publicacoes::GraphicResultForAllService.build(@publicacoes)
   end
 
+  def articles_count
+    group_by = params[:group_by]
+    data = ::Publicacoes::ArticlesCount.count_by(group_by)
+    render json: data, status: :ok
+  rescue ArgumentError => error
+    render json: {error: error}, status: :bad_request
+  end
+
   private
 
   def filter_params
