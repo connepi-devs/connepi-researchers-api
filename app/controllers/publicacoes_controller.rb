@@ -10,6 +10,11 @@ class PublicacoesController < ApplicationController
   def federal_institutes_chart_data
     render json: ::Publicacoes::Charts::FederalInstitutes.chart_data
   end
+  
+  def general_graphic
+    @publicacoes = Publicacao.all
+    render json: ::Publicacoes::GraphicResultForAllService.build(@publicacoes)
+  end
 
   private
 
