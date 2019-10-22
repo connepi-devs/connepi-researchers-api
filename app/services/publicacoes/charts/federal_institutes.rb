@@ -20,13 +20,13 @@ module Publicacoes
 
         def parse_data(data)
           parsed_data = []
-          others = { instituicao: "Outros", regiao: 'Outras', publicacaoes: 0 }
+          others = { instituicao: "Outros", regiao: 'Outras', publicacoes: 0 }
           
           data.each do |k, v|
             if is_a_federal_institute?(k.sigla) && is_from_north_or_northeast?(k.regiao)
               parsed_data.push({ instituicao: k.sigla, regiao: k.regiao, publicacoes: v })
             else
-              others[:publicacaoes] += v
+              others[:publicacoes] += v
             end
           end
 
