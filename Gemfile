@@ -37,6 +37,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise_token_auth'
+
+gem 'devise'
+
+gem 'omniauth'
+
+gem 'apipie-rails'
+
 group :development, :test do
   gem 'annotate', '~> 2.7', '>= 2.7.1'
   gem 'pry'
