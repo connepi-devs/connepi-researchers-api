@@ -1,0 +1,29 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: false
+  TargetRubyVersion: 2.5.1
+
+Rails: 
+  Enabled: true
+  
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+  Exclude:
+    - 'bin/*'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'resource', 'desc']
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
