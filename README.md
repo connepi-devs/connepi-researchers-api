@@ -39,7 +39,7 @@ After that run:
   rails s
 ```
 
-**6. API doc
+**6. API documentation**
 
 To view the API documentation, you need to go to the following URL.
 ```
