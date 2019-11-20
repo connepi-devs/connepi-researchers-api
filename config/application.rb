@@ -17,7 +17,7 @@ module ConnepiResearchersApi
         origins 'localhost:8080', 'https://dashboard-tcc-arthur-novaes.netlify.com'
         resource '*', headers: :any,
         methods: [:get, :post, :delete, :put, :patch, :options, :head],
-        expose: ['access-token', 'uid']
+        expose: ['access-token', 'client', 'uid']
       end
     end
 
