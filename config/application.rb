@@ -15,7 +15,9 @@ module ConnepiResearchersApi
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'localhost:8080', 'https://dashboard-tcc-arthur-novaes.netlify.com'
-        resource '*', headers: :any, methods: [:get, :post, :delete, :put, :patch, :options, :head]
+        resource '*', headers: :any,
+        methods: [:get, :post, :delete, :put, :patch, :options, :head],
+        expose: ['access-token', 'uid']
       end
     end
 
