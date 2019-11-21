@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       get 'publications/institutos_federais_do_norte_e_nordeste', to: 'publications#federal_institutes_chart_data'
       get 'publications/general_graphic', to: 'publications#general_graphic'
       get 'publications/build_graphic', to: 'publications#build_graphic'
-      resources :institutions, only: [:index]
+
+      resources :publications, only: %i[index]
+      resources :institutions, only: %i[index]
     end
   end
 end
