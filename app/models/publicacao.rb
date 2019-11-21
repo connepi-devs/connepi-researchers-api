@@ -28,4 +28,21 @@ class Publicacao < ApplicationRecord
   def instituicao_attribute
     read_attribute(:instituicao)
   end
+
+  def self.search(params)
+    if params
+      find_publications(params)
+    else
+      { data: 'nenhum resultado da busca' }
+    end
+  end
+
+  def self.find_publications(params)
+    publication = Publicacao.order(:publicacao)
+    publication = publication.where('publicacao ilike ?', "%#{params[:titulo]}%") if params[:titulo].present?
+    publication = publication.where('autor like ?', "%#{params[:autor]}%") if params[:autor].present?
+    publication = publication.where(instituicao_id: params[:instituicao]) if params[:instituicao].present?
+    publication = publication.where(ano: params[:ano]) if params[:ano].present?
+    publication
+  end
 end
