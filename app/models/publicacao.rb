@@ -30,11 +30,7 @@ class Publicacao < ApplicationRecord
   end
 
   def self.search(params)
-    if params
-      find_publications(params)
-    else
-      { data: 'nenhum resultado da busca' }
-    end
+    params ? find_publications(params) : []
   end
 
   def self.find_publications(params)

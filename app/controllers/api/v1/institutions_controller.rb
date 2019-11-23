@@ -1,7 +1,6 @@
 module Api
   module V1
     class InstitutionsController < Api::ApplicationController
-
       api :GET, '/v1/institutions', 'Retorna a lista de instituições cadastradas'
       returns code: 200, desc: 'Retorna a lista de instituições cadastradas' do
         property :sigla, String, desc: 'Sigla da Instituição'

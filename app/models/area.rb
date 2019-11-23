@@ -9,4 +9,7 @@
 #
 
 class Area < ApplicationRecord
+  self.table_name = 'areas'
+
+  has_many :publications, class_name: 'Publicacao'
 end
