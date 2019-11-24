@@ -1,8 +1,6 @@
 module Api
   module V1
     class PublicationsController < Api::ApplicationController
-      # before_action :authenticate_api_v1_user!, except: %i[build_graphic federal_institutes_chart_data general_graphic]
-
       api :GET, '/v1/publications', 'Retorna a lista de publicações filtradas'
       param :session, String, desc: 'user is logged in', required: false
       param :titulo, String, desc: 'Titulo da publicação', required: false
@@ -51,14 +49,28 @@ module Api
         render json: ::Publicacoes::GraphicResultForAllService.build(@publicacoes)
       end
 
+      api :GET, '/v1/publications/articles_count', 'description'
+      param :session, String, desc: 'user is logged in', required: false
+      param :group_by, String, desc: 'Tipo de Agrupamento [ano area instituicao regiao]', required: true
+      returns code: 200, desc: 'descricao' do
+      end
+      def articles_count
+        data = publications_service.count_by(publications_params)
+        render json: data, status: :ok
+      end
+
       private
 
+      def publications_service
+        @publications_service ||= ::Publicacoes::PublicationsService.new
+      end
+
       def build_response(publications)
-        publications.map { |publication| ::Presenters::Publications::PublicationPresenter.new(publication) }
+        publications&.map { |publication| ::Presenters::Publications::PublicationPresenter.new(publication) }
       end
 
       def publications_params
-        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano) if params.include?(:publications)
+        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano, :group_by) if params.include?(:publications)
       end
 
       def filter_params
