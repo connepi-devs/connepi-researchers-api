@@ -5,9 +5,7 @@
 #  id             :bigint           not null, primary key
 #  publicacao     :string
 #  autor          :string
-#  instituicao    :string
 #  status         :string
-#  area           :string
 #  ano            :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
