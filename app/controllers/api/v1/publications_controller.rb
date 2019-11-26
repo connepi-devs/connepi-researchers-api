@@ -5,13 +5,15 @@ module Api
       param :session, String, desc: 'user is logged in', required: false
       param :titulo, String, desc: 'Titulo da publicação', required: false
       param :autor, String, desc: 'Autor da publicação', required: false
-      param :instituicao_id, String, desc: 'ID da Instituição', required: false
+      param :instituicao, String, desc: 'ID da Instituição', required: false
+      param :area, String, desc: 'Area da publicação', required: false
       param :ano, :number, desc: 'Ano da publicação', required: false
       returns code: 200, desc: 'Retorna a lista de Publicações Filtradas' do
         property :titulo, String, desc: 'Titulo da publicação'
         property :autor, String, desc: 'Autor da publicação'
         property :ano, :number, desc: 'Ano da publicação'
         property :institiuicao, String, desc: 'Sigla da instituição'
+        property :area, String, desc: 'Nome da area da publicação'
       end
       header 'access-token', 'MzOKLGWHRdMrDpZxHaJC0w', required: true
       header 'client', 'oFaTV8F_OairTB77iwlqkA', required: true
@@ -70,7 +72,9 @@ module Api
       end
 
       def publications_params
-        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano, :group_by) if params.include?(:publications)
+        return unless params.include?(:publications)
+
+        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano, :area, :group_by)
       end
 
       def filter_params
