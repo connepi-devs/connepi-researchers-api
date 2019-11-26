@@ -38,6 +38,7 @@ class Publicacao < ApplicationRecord
     publication = publication.where('publicacao ilike ?', "%#{params[:titulo]}%") if params[:titulo].present?
     publication = publication.where('autor like ?', "%#{params[:autor]}%") if params[:autor].present?
     publication = publication.where(instituicao_id: params[:instituicao]) if params[:instituicao].present?
+    publication = publication.where(area_id: params[:area]) if params[:area].present?
     publication = publication.where(ano: params[:ano]) if params[:ano].present?
     publication
   end
