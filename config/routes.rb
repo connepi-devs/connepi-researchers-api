@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'publications/build_graphic', to: 'publications#build_graphic'
       get 'publications/articles_count', to: 'publications#articles_count'
 
+      resources :events,       only: %i[create index]
       resources :publications, only: %i[index]
       resources :institutions, only: %i[index]
     end
