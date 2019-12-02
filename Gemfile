@@ -45,6 +45,8 @@ gem 'omniauth'
 
 gem 'apipie-rails'
 
+gem 'roo', '~> 2.8.0'
+
 group :development, :test do
   gem 'annotate', '~> 2.7', '>= 2.7.1'
   gem 'pry'

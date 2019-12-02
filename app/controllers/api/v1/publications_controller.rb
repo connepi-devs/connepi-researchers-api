@@ -61,7 +61,16 @@ module Api
         render json: data, status: :ok
       end
 
+      def import_sheet
+        created_publications = publications_spreadsheet_service.add_publications(publications_params)
+        render json: created_publications
+      end
+
       private
+
+      def publications_spreadsheet_service
+        @publications_spreadsheet_service ||= ::Publicacoes::PublicationsSpreadsheetService.new
+      end
 
       def publications_service
         @publications_service ||= ::Publicacoes::PublicationsService.new
@@ -74,7 +83,7 @@ module Api
       def publications_params
         return unless params.include?(:publications)
 
-        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano, :area, :group_by)
+        params.require(:publications).permit(:titulo, :autor, :instituicao, :ano, :area, :group_by, :file)
       end
 
       def filter_params
