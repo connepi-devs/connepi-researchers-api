@@ -18,8 +18,8 @@
 class Publicacao < ApplicationRecord
   self.table_name = :publicacoes
 
-  belongs_to :area
-  belongs_to :instituicao
+  belongs_to :area, foreign_key: 'area_id'
+  belongs_to :instituicao, foreign_key: 'instituicao_id'
 
   def area_attribute
     read_attribute(:area)
