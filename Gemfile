@@ -13,7 +13,7 @@ gem 'active_model_serializers'
 
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '>= 3.12.2'
 # Use rack-cors
 gem 'rack-cors'
 # Use SCSS for stylesheets
