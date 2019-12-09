@@ -11,4 +11,6 @@
 
 class Instituicao < ApplicationRecord
   self.table_name = :instituicoes
+
+  has_many :publications, class_name: 'Publicacao'
 end

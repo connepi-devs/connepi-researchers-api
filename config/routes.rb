@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'publications/general_graphic', to: 'publications#general_graphic'
       get 'publications/build_graphic', to: 'publications#build_graphic'
       get 'publications/articles_count', to: 'publications#articles_count'
+      post 'publications/import_sheet', to: 'publications#import_sheet'
 
       resources :areas,        only: %i[index]
       resources :events,       only: %i[create index]
