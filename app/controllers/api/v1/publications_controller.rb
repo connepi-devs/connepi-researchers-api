@@ -61,6 +61,16 @@ module Api
         render json: data, status: :ok
       end
 
+      api :POST, '/v1/publications/import_sheet', 'Importa uma planilha contendo publicações'
+      param :session, String, desc: 'user is logged in', required: false
+      param :file, String, desc: 'Planilha para importação', required: false
+      returns code: 200, desc: 'Retorna a lista de Publicações cadastradas' do
+        property :publicacao, String, desc: 'Titulo da publicação'
+        property :autor, String, desc: 'Autor da publicação'
+        property :ano, :number, desc: 'Ano da publicação'
+        property :area, String, desc: 'Nome da area da publicação'
+        property :institiuicao, String, desc: 'Sigla da instituição'
+      end
       def import_sheet
         created_publications = publications_spreadsheet_service.add_publications(publications_params)
         render json: created_publications
