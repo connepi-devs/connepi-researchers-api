@@ -38,8 +38,8 @@ module Api
       header 'client', 'oFaTV8F_OairTB77iwlqkA', required: true
       header 'uid', 'users uid', required: true
       def show
-        publication = Publicacao.find(params[:id])
-        render json: ::Presenters::Publications::PublicationPresenter.new(publication)
+        publication = Publicacao.find_by_id(params[:id])
+        render json: publication_presenter(publication)
       end
 
       api :GET, '/v1/publications/build_graphic', 'description'
@@ -103,6 +103,10 @@ module Api
 
       def publications_service
         @publications_service ||= ::Publicacoes::PublicationsService.new
+      end
+
+      def publication_presenter(publication)
+        publication ? ::Presenters::Publications::PublicationPresenter.new(publication) : []
       end
 
       def build_response(publications)
