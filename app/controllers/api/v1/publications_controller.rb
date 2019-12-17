@@ -9,6 +9,7 @@ module Api
       param :area, String, desc: 'Area da publicação', required: false
       param :ano, :number, desc: 'Ano da publicação', required: false
       returns code: 200, desc: 'Retorna a lista de Publicações Filtradas' do
+        property :id, Integer, desc: 'Id da publicação'
         property :titulo, String, desc: 'Titulo da publicação'
         property :autor, String, desc: 'Autor da publicação'
         property :ano, :number, desc: 'Ano da publicação'

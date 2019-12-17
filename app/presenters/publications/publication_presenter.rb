@@ -1,9 +1,10 @@
 module Presenters
   module Publications
     class PublicationPresenter
-      attr_reader :publicacao, :autor, :ano, :file_url
+      attr_reader :id, :publicacao, :autor, :ano, :file_url
 
       def initialize(attrs = {})
+        @id                = attrs.id
         @titulo            = attrs.publicacao
         @autor             = attrs.autor
         @ano               = attrs.ano
