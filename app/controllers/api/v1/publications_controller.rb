@@ -23,6 +23,25 @@ module Api
         render json: build_response(publications)
       end
 
+      api :GET, '/v1/publications/:id', 'Retorna uma publicação'
+      param :session, String, desc: 'user is logged in', required: false
+      param :id, String, desc: 'ID da publicação', required: true
+      returns code: 200, desc: 'Retorna uma publicação' do
+        property :titulo, String, desc: 'Titulo da publicação'
+        property :autor, String, desc: 'Autor da publicação'
+        property :ano, :number, desc: 'Ano da publicação'
+        property :institiuicao, String, desc: 'Sigla da instituição'
+        property :area, String, desc: 'Nome da area da publicação'
+        property :file_url, String, desc: 'Link para o arquivo da publicação'
+      end
+      header 'access-token', 'MzOKLGWHRdMrDpZxHaJC0w', required: true
+      header 'client', 'oFaTV8F_OairTB77iwlqkA', required: true
+      header 'uid', 'users uid', required: true
+      def show
+        publication = Publicacao.find(params[:id])
+        render json: ::Presenters::Publications::PublicationPresenter.new(publication)
+      end
+
       api :GET, '/v1/publications/build_graphic', 'description'
       param :session, String, desc: 'user is logged in', required: false
       returns code: 200, desc: 'descricao' do
