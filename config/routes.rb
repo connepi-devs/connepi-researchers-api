@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
       resources :areas,        only: %i[index]
       resources :events,       only: %i[create index]
-      resources :publications, only: %i[index]
+      resources :publications, only: %i[index show]
       resources :institutions, only: %i[index]
     end
   end
